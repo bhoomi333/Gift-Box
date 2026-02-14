@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiftBox - Send Joy to Anyone Special</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="heart">❤️</span> GiftBox <span class="heart">❤️</span>
+            </div>
+            <p class="subtitle">Pick up to 5 cute gifts, add a message & send love to anyone special ✨</p>
+        </header>
+
+        <div class="step-indicator">
+            <div class="step-circle active" data-step="1">
+                🎁
+            </div>
+            <div class="step-line" id="line1"></div>
+            <div class="step-circle" data-step="2">
+                ✉️
+            </div>
+            <div class="step-line" id="line2"></div>
+            <div class="step-circle" data-step="3">
+                ✨
+            </div>
+        </div>
+
+        <div class="content-section">
+            <!-- Step 1: Select Gifts -->
+            <div class="section active" id="step1">
+                <h2>Choose Your Gifts</h2>
+                <p class="section-subtitle">Select up to 5 items (<span id="selectedCount">0</span>/5)</p>
+
+                <div class="gift-grid" id="giftGrid"></div>
+
+                <div class="btn-group">
+                    <button class="btn-primary" onclick="nextStep()" id="nextBtn1" disabled>Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Add Details -->
+            <div class="section" id="step2">
+                <h2>Add Your Message</h2>
+                <p class="section-subtitle">Who's the special person?</p>
+                
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Recipient's Email *</label>
+                        <input type="email" id="recipientEmail" placeholder="recipient@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="senderName" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Personal Message (Optional)</label>
+                        <textarea id="message" placeholder="Write your message here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Back</button>
+                    <button class="btn-primary" onclick="sendGift()">Send Gift 🎁</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Wrapping Animation -->
+            <div class="section" id="step3">
+                <div class="wrapping-animation">
+                    <div class="gift-box">
+                        <div class="box">
+                            <div class="ribbon-h"></div>
+                            <div class="ribbon-v"></div>
+                            <div class="bow">🎀</div>
+                        </div>
+                    </div>
+                    <p class="wrapping-text">Wrapping your gifts...</p>
+                    <p class="wrapping-subtext">Adding a sprinkle of magic ✨</p>
+                </div>
+            </div>
+
+            <!-- Step 4: Success -->
+            <div class="section" id="step4">
+                <div class="success-message">
+                    <div class="wrapped-heart">
+                        <div class="heart-icon">💝</div>
+                    </div>
+                    <h2>Gift Sent!</h2>
+                    <p class="success-subtext">Your lovely gift box has been sent to someone special</p>
+                    
+                    <div class="gift-icon-display">
+                        🎁
+                    </div>
+                    
+                    <div class="message-box">
+                        <div class="message-content" id="displayMessage">
+                            <!-- Message will be inserted here -->
+                        </div>
+                        <div class="message-signature">
+                            — <span id="displaySender"></span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary btn-send-another" onclick="resetApp()">
+                        Send Another Gift 💝
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
